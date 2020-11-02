@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dcc9cc46-b52c-4028-a887-66da4942af20" name="Default Changelist" comment="" />
+    <list default="true" id="dcc9cc46-b52c-4028-a887-66da4942af20" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +20,9 @@
         <option value="CSS File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -128,11 +134,14 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1jjTrvPhiF2Uq0czRuXBVLAIDOB" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../laravel.dropshipping" />
@@ -154,7 +163,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1604316703897</updated>
-      <workItem from="1604316704920" duration="3215000" />
+      <workItem from="1604316704920" duration="4927000" />
     </task>
     <servers />
   </component>
@@ -162,6 +171,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="550" y="254" key="#Notifications" timestamp="1604327938613">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="550" y="254" key="#Notifications/0.0.1600.860@0.0.1600.860" timestamp="1604327938613" />
     <state x="580" y="185" key="FileChooserDialogImpl" timestamp="1604320215052">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
