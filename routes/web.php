@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::prefix('/shop')->group(function () {
+    Route::get('/', [ShopController::class, 'index'])->name('shop');
+    Route::get('/{category}/{id}', [ShopController::class, 'show'])->name('shop.view');
 });
