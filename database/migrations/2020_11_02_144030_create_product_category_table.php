@@ -17,6 +17,9 @@ class CreateProductCategoryTable extends Migration
             $table->id();
             $table->foreignId('product_id');
             $table->foreignId('category_id');
+
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
