@@ -24,4 +24,9 @@ abstract class CoreRepository
     {
         return $this->model::all();
     }
+
+    public function getQuantityProducts()
+    {
+        return $this->model::count();
+    }
 }

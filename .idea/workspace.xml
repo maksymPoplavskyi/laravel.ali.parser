@@ -2,15 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcc9cc46-b52c-4028-a887-66da4942af20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Repositories/CoreRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Repositories/ProductRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/html.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/product.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Repositories/CategoryRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/CategoryService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/MainService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/ShopService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_02_142233_create_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_02_142233_create_products_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ShopController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ShopController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/CoreRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/CoreRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/ProductRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/ProductRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/CategorySeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/CategorySeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/html.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/html.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/shop.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/shop.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -19,7 +24,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -156,7 +161,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
     <property name="database.data.extractors.current.id" value="SQL Inserts" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../laravel.dropshipping" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/css" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
@@ -164,7 +169,11 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\web\OpenServer\domains\laravel.ali.parser\public\css" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\web\OpenServer\domains\laravel.ali.parser\public\css" />
       <recent name="D:\web\OpenServer\domains\laravel.ali.parser\app" />
     </key>
   </component>
@@ -185,7 +194,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1604316703897</updated>
-      <workItem from="1604316704920" duration="18555000" />
+      <workItem from="1604316704920" duration="19409000" />
+      <workItem from="1604392662648" duration="21926000" />
     </task>
     <servers />
   </component>
@@ -193,6 +203,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="426" y="108" key="#Inspections" timestamp="1604422072389">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="426" y="108" key="#Inspections/0.0.1600.860@0.0.1600.860" timestamp="1604422072389" />
     <state x="550" y="254" key="#Notifications" timestamp="1604327938613">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -201,26 +215,46 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="392" y="88" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.860@0.0.1600.860" timestamp="1604332078425" />
-    <state x="605" y="112" key="#com.intellij.ide.util.MemberChooser" timestamp="1604337892959">
+    <state x="605" y="112" key="#com.intellij.ide.util.MemberChooser" timestamp="1604395852788">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="605" y="112" key="#com.intellij.ide.util.MemberChooser/0.0.1600.860@0.0.1600.860" timestamp="1604337892959" />
-    <state x="572" y="201" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604337869093">
+    <state x="605" y="112" key="#com.intellij.ide.util.MemberChooser/0.0.1600.860@0.0.1600.860" timestamp="1604395852788" />
+    <state x="572" y="201" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604407097584">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="572" y="201" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.860@0.0.1600.860" timestamp="1604337869093" />
+    <state x="572" y="201" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.860@0.0.1600.860" timestamp="1604407097584" />
+    <state x="530" y="185" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604422019751">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="530" y="185" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1604422019751" />
     <state x="580" y="185" key="FileChooserDialogImpl" timestamp="1604342703036">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="580" y="185" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1604342703036" />
-    <state x="528" y="153" key="NewPhpClassDialog" timestamp="1604337853524">
+    <state width="1100" height="241" key="GridCell.Tab.0.bottom" timestamp="1604416946640">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="528" y="153" key="NewPhpClassDialog/0.0.1600.860@0.0.1600.860" timestamp="1604337853524" />
-    <state x="634" y="353" key="NewPhpFileDialog" timestamp="1604346984005">
+    <state width="1100" height="241" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1604416946640" />
+    <state width="1100" height="241" key="GridCell.Tab.0.center" timestamp="1604416946640">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="634" y="353" key="NewPhpFileDialog/0.0.1600.860@0.0.1600.860" timestamp="1604346984005" />
+    <state width="1100" height="241" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1604416946640" />
+    <state width="1100" height="241" key="GridCell.Tab.0.left" timestamp="1604416946640">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1100" height="241" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1604416946640" />
+    <state width="1100" height="241" key="GridCell.Tab.0.right" timestamp="1604416946640">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1100" height="241" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1604416946640" />
+    <state x="528" y="153" key="NewPhpClassDialog" timestamp="1604422902666">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="528" y="153" key="NewPhpClassDialog/0.0.1600.860@0.0.1600.860" timestamp="1604422902666" />
+    <state x="634" y="353" key="NewPhpFileDialog" timestamp="1604422693543">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="634" y="353" key="NewPhpFileDialog/0.0.1600.860@0.0.1600.860" timestamp="1604422693543" />
     <state x="301" y="75" key="SettingsEditor" timestamp="1604328782600">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -229,10 +263,18 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="380" y="85" key="com.intellij.database.dbimport.ImportDialog/0.0.1600.860@0.0.1600.860" timestamp="1604342573741" />
-    <state x="530" y="235" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog" timestamp="1604342688566">
+    <state x="530" y="235" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog" timestamp="1604396406241">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="530" y="235" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog/0.0.1600.860@0.0.1600.860" timestamp="1604342688566" />
+    <state x="530" y="235" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog/0.0.1600.860@0.0.1600.860" timestamp="1604396406241" />
+    <state x="508" y="163" width="584" height="592" key="find.popup" timestamp="1604416848058">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="508" y="163" width="584" height="592" key="find.popup/0.0.1600.860@0.0.1600.860" timestamp="1604416848058" />
+    <state x="456" y="195" key="run.anything.popup" timestamp="1604415264427">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1604415264427" />
     <state x="463" y="180" key="search.everywhere.popup" timestamp="1604319843317">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

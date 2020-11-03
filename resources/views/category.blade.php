@@ -1,10 +1,10 @@
 @extends('layouts.html')
 
-@section('title', 'Shop')
+@section('title', $category_name)
 
 @section('content')
 
-    <h1 class="mx-auto mt-5" style="width: 400px;">THIS IS SHOP PAGE</h1>
+    <h1 class="mx-auto mt-5" style="max-width: 1200px;">THIS IS {{strtoupper($category_name)}} CATEGORY</h1>
 
     <div class="album py-5">
         <div class="container">

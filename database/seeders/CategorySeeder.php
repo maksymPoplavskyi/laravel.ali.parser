@@ -19,7 +19,7 @@ class CategorySeeder extends Seeder
                 'name' => 'shoes'
             ],
             [
-                'name' => 'men\'s clothing'
+                'name' => 'outerwear'
             ]
         ]);
     }
