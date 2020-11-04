@@ -5,6 +5,7 @@ namespace App\Repositories;
 
 
 use App\Models\Product as Model;
+use Carbon\Carbon;
 
 class ProductRepository extends CoreRepository
 {
@@ -42,5 +43,20 @@ class ProductRepository extends CoreRepository
             ->leftJoin('categories', 'product_category.category_id', '=', 'categories.id')
             ->where('categories.name', '=', $category_name)
             ->get();
+    }
+
+    public function addProductThenReturnId($request)
+    {
+        return $this->model::insertGetId([
+
+            'description' => $request->description,
+            'old_price' => $request->old_price,
+            'price' => $request->price,
+            'sales' => $request->sales,
+            'img_url' => $request->img_url,
+            'order_count' => $request->order_count,
+            'stock_availability' => $request->stock_availability,
+            'created_at' => Carbon::now()
+        ]);
     }
 }
