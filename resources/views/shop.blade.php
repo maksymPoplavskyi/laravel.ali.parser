@@ -20,13 +20,14 @@
                                     <h3 style="font-weight: 700; opacity: .5; text-decoration: line-through">
                                         {{$product->old_price}} €</h3>
                                     <span class="badge badge-danger"
-                                          style="height: 30px;">%{{$product->sales}}</span>
+                                          style="height: 30px;">{{$product->sales}} %</span>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <a href="{{route('shop.view', [$product->category_name, $product->id])}}"
                                            class="btn btn-sm btn-outline-secondary">View</a>
-                                        <a class="btn btn-sm btn-outline-secondary">Edit</a>
+                                        <a href="{{route('shop.update.view', [$product->category_name, $product->id])}}"
+                                            class="btn btn-sm btn-outline-secondary">Edit</a>
                                         <a class="btn btn-sm btn-outline-secondary">Delete</a>
                                     </div>
                                     <small class="text-muted">{{date('Y-m-d', strtotime($product->created_at))}}</small>

@@ -20,8 +20,13 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('/shop')->group(function () {
     Route::get('/', [ShopController::class, 'index'])->name('shop');
+
     Route::get('/create', [ShopController::class, 'createView'])->name('shop.create.view');
     Route::post('/create', [ShopController::class, 'createAction'])->name('shop.create');
+
+    Route::get('/update/{category}/{id}', [ShopController::class, 'updateView'])->name('shop.update.view');
+    Route::post('/update/{id}', [ShopController::class, 'updateAction'])->name('shop.update');
+
     Route::get('/{category}', [CategoryController::class, 'index'])->name('shop.category');
     Route::get('/{category}/{id}', [ShopController::class, 'show'])->name('shop.view');
 });

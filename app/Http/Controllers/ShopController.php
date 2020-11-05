@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ShopCreateProductRequest;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ProductRepository;
+use App\Services\CategoryService;
 use App\Services\ProductCategoryService;
 use App\Services\ShopService;
 
@@ -68,9 +69,36 @@ class ShopController extends Controller
 
     }
 
-    public function update()
+    public function updateView($categoryName, $productId)
     {
+        $product = app(ProductRepository::class)->getProductWithCategory($productId);
 
+        $categories = app(CategoryRepository::class)->getAll();
+
+        return view('update', [
+            'product' => $product,
+            'categories' => $categories,
+            'products_sum' => $this->products_sum,
+            'categories_count' => $this->categories_count
+        ]);
+    }
+
+    public function updateAction($productId, ShopCreateProductRequest $request, ShopService $shopService, ProductCategoryService $productCategoryService, CategoryService $categoryService)
+    {
+        $updateProductResult = $shopService->updateProductAction($productId, $request);
+
+        if (!$updateProductResult) return abort(404, 'updateAction');
+
+        $productCategoryService->updateRelationProductWithCategory($productId, $request->get('category_id'));
+
+        $category = $categoryService->getCategoryById($productId);
+
+        if (!$category) return abort(404, 'updateAction');
+
+        return redirect()->route('shop.update.view', [
+            'category' => $category->name,
+            'id' => $productId
+        ]);
     }
 
     public function delete()

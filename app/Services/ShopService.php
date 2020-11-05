@@ -5,7 +5,6 @@ namespace App\Services;
 
 
 use App\Repositories\ProductRepository;
-use Carbon\Carbon;
 
 class ShopService extends MainService
 {
@@ -13,6 +12,12 @@ class ShopService extends MainService
     {
         $idAddedProduct = app(ProductRepository::class)->addProductThenReturnId($request);
 
-        return (is_numeric($idAddedProduct)) ? $idAddedProduct : abort(404);
+        return (is_numeric($idAddedProduct)) ? $idAddedProduct : abort(404, 'addProductAction');
+    }
+
+    public function updateProductAction($productId, $request) :bool
+    {
+        $updateResult = app(ProductRepository::class)->updateProduct($productId, $request);
+        return ($updateResult) ? true : false;
     }
 }

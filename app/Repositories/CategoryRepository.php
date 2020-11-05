@@ -14,7 +14,7 @@ class CategoryRepository extends CoreRepository
         return Model::getModel();
     }
 
-    public function getCategoryById($id)
+    public function getCategoryById($id) :object
     {
         return $this->model->find($id);
     }

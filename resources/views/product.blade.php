@@ -26,7 +26,7 @@
                     </div>
                     <div class="col">
                         <span class="badge badge-danger"
-                              style="height: 30px;">%{{$product->sales}}</span>
+                              style="height: 30px;">{{$product->sales}} %</span>
                     </div>
                 </div>
                 <div class="row mt-3" style="font-size: 18px;">
