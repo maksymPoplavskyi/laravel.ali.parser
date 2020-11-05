@@ -28,7 +28,8 @@
                                            class="btn btn-sm btn-outline-secondary">View</a>
                                         <a href="{{route('shop.update.view', [$product->category_name, $product->id])}}"
                                             class="btn btn-sm btn-outline-secondary">Edit</a>
-                                        <a class="btn btn-sm btn-outline-secondary">Delete</a>
+                                        <a href="{{route('shop.delete', [$product->category_name, $product->id])}}"
+                                            class="btn btn-sm btn-outline-secondary">Delete</a>
                                     </div>
                                     <small class="text-muted">{{date('Y-m-d', strtotime($product->created_at))}}</small>
                                 </div>

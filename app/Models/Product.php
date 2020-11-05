@@ -13,4 +13,9 @@ class Product extends Model
     protected $table = 'products';
 
     public $timestamps = true;
+
+    public function category()
+    {
+        return $this->hasOne(ProductCategory::class);
+    }
 }

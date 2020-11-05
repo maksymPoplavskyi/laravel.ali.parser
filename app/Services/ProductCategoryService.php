@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Repositories\CategoryRepository;
 use App\Repositories\ProductCategoryRepository;
+use App\Repositories\ProductRepository;
 
 class ProductCategoryService extends MainService
 {
@@ -20,10 +21,19 @@ class ProductCategoryService extends MainService
         }
     }
 
-    final public function updateRelationProductWithCategory($productId, $categoryId) :void
+    final public function updateRelationProductWithCategory($productId, $categoryId): void
     {
         $resultUpdateRelation = app(ProductCategoryRepository::class)->updateRelation($productId, $categoryId);
 
         if ($resultUpdateRelation === null) abort('404', 'updateRelation');
+    }
+
+    public function deleteRelationProductWithCategory($productId) :bool
+    {
+        $productCategory = app(ProductRepository::class)->getProductCategory($productId);
+
+        $resultDelete = app(ProductCategoryRepository::class)->deleteRelation($productCategory->id);
+
+        return ($resultDelete) ? true : false;
     }
 }

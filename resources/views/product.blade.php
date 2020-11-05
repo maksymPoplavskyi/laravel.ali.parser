@@ -39,11 +39,22 @@
                 </div>
                 <div class="row mt-5 text-right" style="opacity: 0.7; ">
                     <div class="col">
-                        <p style="font-size: 20px;">дата добавления: {{date('Y-m-d', strtotime($product->created_at))}}</p>
+                        <p style="font-size: 20px;">дата
+                            добавления: {{date('Y-m-d', strtotime($product->created_at))}}</p>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-5">
+            <div class="btn-group">
+                <a href="{{route('shop.update.view', [$product->category_name, $product->id])}}"
+                   class="btn btn-sm btn-outline-secondary">Edit</a>
+                <a href="{{route('shop.delete', [$product->category_name, $product->id])}}"
+                   class="btn btn-sm btn-outline-secondary">Delete</a>
+            </div>
+        </div>
+
     </div>
 
 

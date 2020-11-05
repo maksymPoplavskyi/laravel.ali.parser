@@ -29,4 +29,6 @@ Route::prefix('/shop')->group(function () {
 
     Route::get('/{category}', [CategoryController::class, 'index'])->name('shop.category');
     Route::get('/{category}/{id}', [ShopController::class, 'show'])->name('shop.view');
+
+    Route::get('/delete/{category}/{id}', [ShopController::class, 'deleteAction'])->name('shop.delete');
 });

@@ -22,9 +22,14 @@ class ProductCategoryRepository extends CoreRepository
         ]);
     }
 
-    public function updateRelation($productId, $categoryId) :bool
+    public function updateRelation($productId, $categoryId): bool
     {
         return $this->model::where('product_id', $productId)
             ->update(['category_id' => $categoryId]);
+    }
+
+    public function deleteRelation($id) :bool
+    {
+        return $this->model::where('id', $id)->delete();
     }
 }

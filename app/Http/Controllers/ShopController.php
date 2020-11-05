@@ -8,6 +8,7 @@ use App\Repositories\ProductRepository;
 use App\Services\CategoryService;
 use App\Services\ProductCategoryService;
 use App\Services\ShopService;
+use Illuminate\Support\Facades\Route;
 
 class ShopController extends Controller
 {
@@ -35,7 +36,7 @@ class ShopController extends Controller
 
     public function show($category, $id)
     {
-        $product = app(ProductRepository::class)->getProductById($id);
+        $product = app(ProductRepository::class)->getProductWithCategory($id);
 
         return view('product', [
             'category' => $category,
@@ -86,13 +87,11 @@ class ShopController extends Controller
     public function updateAction($productId, ShopCreateProductRequest $request, ShopService $shopService, ProductCategoryService $productCategoryService, CategoryService $categoryService)
     {
         $updateProductResult = $shopService->updateProductAction($productId, $request);
-
         if (!$updateProductResult) return abort(404, 'updateAction');
 
         $productCategoryService->updateRelationProductWithCategory($productId, $request->get('category_id'));
 
-        $category = $categoryService->getCategoryById($productId);
-
+        $category = $categoryService->getCategoryById($request->get('category_id'));
         if (!$category) return abort(404, 'updateAction');
 
         return redirect()->route('shop.update.view', [
@@ -101,8 +100,19 @@ class ShopController extends Controller
         ]);
     }
 
-    public function delete()
+    public function deleteAction($categoryName, $productId, ProductCategoryService $productCategoryService, ShopService $shopService)
     {
+        $resultDeleteRelation = $productCategoryService->deleteRelationProductWithCategory($productId);
+        if (!$resultDeleteRelation) abort(404, 'delete relation');
+
+        $resultDeleteProduct = $shopService->deleteProductAction($productId);
+        if (!$resultDeleteProduct) abort(404, 'delete product');
+
+        $previousRoute = app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName();
+
+        if ($previousRoute === 'shop.view' || $previousRoute === 'shop.update.view') return redirect()->route('shop');
+
+        return redirect()->back();
 
     }
 }

@@ -19,7 +19,12 @@ class ProductRepository extends CoreRepository
         return $this->model::find($id);
     }
 
-    public function getProductWithCategory($id) :object
+    public function getProductCategory($id)
+    {
+        return $this->model::find($id)->category()->first();
+    }
+
+    public function getProductWithCategory($id): object
     {
         return $this->model::select(['products.*', 'categories.id as category_id', 'categories.name as category_name'])
             ->leftJoin('product_category', 'product_category.product_id', '=', 'products.id')
@@ -80,5 +85,10 @@ class ProductRepository extends CoreRepository
                 'order_count' => $request->order_count,
                 'stock_availability' => $request->stock_availability
             ]);
+    }
+
+    public function deleteProduct($productId) :bool
+    {
+        return $this->model::where('id', $productId)->delete();
     }
 }

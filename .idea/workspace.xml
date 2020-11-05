@@ -2,17 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcc9cc46-b52c-4028-a887-66da4942af20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/update.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ShopController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ShopController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repositories/ProductCategoryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/ProductCategoryRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repositories/ProductRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/ProductRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/CategoryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/CategoryService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/ProductCategoryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/ProductCategoryService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/ShopService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/ShopService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/category.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/shop.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/shop.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/update.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -193,7 +194,9 @@
       <updated>1604316703897</updated>
       <workItem from="1604316704920" duration="19409000" />
       <workItem from="1604392662648" duration="34504000" />
-      <workItem from="1604484216441" duration="19594000" />
+      <workItem from="1604484216441" duration="20535000" />
+      <workItem from="1604577980637" duration="5862000" />
+      <workItem from="1604604667519" duration="4366000" />
     </task>
     <servers />
   </component>
@@ -225,10 +228,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="530" y="185" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1604489912362" />
-    <state x="580" y="185" key="FileChooserDialogImpl" timestamp="1604495992394">
+    <state x="580" y="185" key="FileChooserDialogImpl" timestamp="1604580109404">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="580" y="185" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1604495992394" />
+    <state x="580" y="185" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1604580109404" />
     <state width="1100" height="241" key="GridCell.Tab.0.bottom" timestamp="1604443287386">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -273,9 +276,9 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1604435904571" />
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1604497438449">
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1604606699200">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1604497438449" />
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1604606699200" />
   </component>
 </project>

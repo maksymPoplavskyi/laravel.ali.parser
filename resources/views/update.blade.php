@@ -7,7 +7,8 @@
     <h1 class="mx-auto mt-5" style="max-width: 1200px;">UPDATE PRODUCT</h1>
     <div class="row main">
 
-        <form style="font-size: 15px; width: 600px;" class="col" method="post" action="{{route('shop.update', $product->id)}}">
+        <form style="font-size: 15px; width: 600px;" class="col" method="post"
+              action="{{route('shop.update', $product->id)}}">
             @csrf
 
             <div class="form-group">
@@ -15,7 +16,7 @@
                 <select class="form-control" name="category_id">
                     @foreach($categories as $category)
                         <option {{($category->name === $product->category_name) ? "selected='selected'" : ''}}
-                        value="{{$category->id}}">{{$category->name}}</option>
+                                value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
                 </select>
                 @error('category_id')
@@ -131,6 +132,15 @@
                                 <p style="font-size: 20px;">дата
                                     добавления: {{date('Y-m-d', strtotime($product->created_at))}}</p>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group right">
+                            <a href="{{route('shop.view', [$product->category_name, $product->id])}}"
+                               class="btn btn-sm btn-outline-secondary">View</a>
+                            <a href="{{route('shop.delete', [$product->category_name, $product->id])}}"
+                               class="btn btn-sm btn-outline-secondary">Delete</a>
                         </div>
                     </div>
                 </div>
