@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ShopController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,16 +20,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('/shop')->group(function () {
-    Route::get('/', [ShopController::class, 'index'])->name('shop');
+    Route::get('/', [ProductController::class, 'index'])->name('shop');
 
-    Route::get('/create', [ShopController::class, 'createView'])->name('shop.create.view');
-    Route::post('/create', [ShopController::class, 'createAction'])->name('shop.create');
+    Route::get('/create', [ProductController::class, 'createView'])->name('shop.create.view');
+    Route::post('/create', [ProductController::class, 'createAction'])->name('shop.create');
 
-    Route::get('/update/{category}/{id}', [ShopController::class, 'updateView'])->name('shop.update.view');
-    Route::post('/update/{id}', [ShopController::class, 'updateAction'])->name('shop.update');
+    Route::get('/update/{id}', [ProductController::class, 'updateView'])->name('shop.update.view');
+    Route::patch('/update/{id}', [ProductController::class, 'updateAction'])->name('shop.update');
 
     Route::get('/{category}', [CategoryController::class, 'index'])->name('shop.category');
-    Route::get('/{category}/{id}', [ShopController::class, 'show'])->name('shop.view');
+    Route::get('/product/{id}', [ProductController::class, 'show'])->name('shop.view');
 
-    Route::get('/delete/{category}/{id}', [ShopController::class, 'deleteAction'])->name('shop.delete');
+    Route::get('/delete/{id}', [ProductController::class, 'deleteAction'])->name('shop.delete');
 });
+
+Route::get('/{locale}', function ($locale) {
+    Session::put('locale', $locale);
+
+    return redirect()->back();
+})->name('locale');

@@ -4,18 +4,19 @@
 
 @section('content')
 
-    <h1 class="mx-auto mt-5" style="max-width: 1200px;">UPDATE PRODUCT</h1>
+    <h1 class="mx-auto mt-5" style="max-width: 1200px;">{{__('content.updateTitle')}}</h1>
     <div class="row main">
 
         <form style="font-size: 15px; width: 600px;" class="col" method="post"
               action="{{route('shop.update', $product->id)}}">
             @csrf
+            @method('PATCH')
 
             <div class="form-group">
-                <label for="category">категория</label>
+                <label for="category">{{__('content.form.category')}}</label>
                 <select class="form-control" name="category_id">
                     @foreach($categories as $category)
-                        <option {{($category->name === $product->category_name) ? "selected='selected'" : ''}}
+                        <option {{($category->name === $product->category->name) ? "selected='selected'" : ''}}
                                 value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
                 </select>
@@ -25,7 +26,7 @@
             </div>
 
             <div class="form-group">
-                <label for="description">описание</label>
+                <label for="description">{{__('content.form.description')}}</label>
                 <textarea class="form-control" name="description" rows="2">{{$product->description}}</textarea>
                 @error('description')
                 <span class="text-danger">{{$message}}</span>
@@ -34,7 +35,7 @@
 
             <div class="row">
                 <div class="form-group col">
-                    <label for="old_price">старая цена, €</label>
+                    <label for="old_price">{{__('content.form.oldPrice')}}, €</label>
                     <input type="number" class="form-control" name="old_price" step="0.01"
                            value="{{$product->old_price}}">
                     @error('old_price')
@@ -43,15 +44,7 @@
                 </div>
 
                 <div class="form-group col">
-                    <label for="price">новая цена, €</label>
-                    <input type="number" class="form-control" name="price" step="0.01" value="{{$product->price}}">
-                    @error('price')
-                    <span class="text-danger">{{$message}}</span>
-                    @enderror
-                </div>
-
-                <div class="form-group col">
-                    <label for="sales">скидка, %</label>
+                    <label for="sales">{{__('content.form.sale')}}, %</label>
                     <input type="number" class="form-control" name="sales" value="{{$product->sales}}">
                     @error('sales')
                     <span class="text-danger">{{$message}}</span>
@@ -60,7 +53,7 @@
             </div>
 
             <div class="form-group">
-                <label for="img_url">ссылка на картинку</label>
+                <label for="img_url">{{__('content.form.link')}}</label>
                 <input type="url" class="form-control" name="img_url"
                        value="{{$product->img_url}}">
                 @error('img_url')
@@ -70,7 +63,7 @@
 
             <div class="row">
                 <div class="form-group col">
-                    <label for="order_count">количество продаж</label>
+                    <label for="order_count">{{__('content.form.orders')}}</label>
                     <input type="number" class="form-control" name="order_count" value="{{$product->order_count}}">
                     @error('order_count')
                     <span class="text-danger">{{$message}}</span>
@@ -78,7 +71,7 @@
                 </div>
 
                 <div class="form-group col">
-                    <label for="stock_availability">в стоке</label>
+                    <label for="stock_availability">{{__('content.form.inStock')}}</label>
                     <input type="number" class="form-control" name="stock_availability"
                            value="{{$product->stock_availability}}">
                     @error('stock_availability')
@@ -88,13 +81,13 @@
             </div>
 
             <div class="form-group pb-5 mt-5">
-                <input type="submit" class="form-control" value="обновить">
+                <input type="submit" class="form-control" value="{{__('content.form.updateButton')}}">
             </div>
 
         </form>
         <div class="col">
 
-            <h1 class="mx-auto mt-5" style="width: 400px;">PREVIEW PRODUCT</h1>
+            <h1 class="mx-auto mt-5" style="width: 400px;">{{__('content.previewTitle')}}</h1>
 
             <div class="container mt-5">
                 <div class="row">
@@ -121,26 +114,25 @@
                         </div>
                         <div class="row mt-3" style="font-size: 18px;">
                             <div class="col">
-                                количество заказов: {{$product->order_count}}
+                                {{__('content.orders')}}: {{$product->order_count}}
                             </div>
                             <div class="col">
-                                количество на складе: {{$product->stock_availability}}
+                                {{__('content.inStock')}}: {{$product->stock_availability}}
                             </div>
                         </div>
                         <div class="row mt-5 text-right" style="opacity: 0.7; ">
                             <div class="col">
-                                <p style="font-size: 20px;">дата
-                                    добавления: {{date('Y-m-d', strtotime($product->created_at))}}</p>
+                                <p style="font-size: 20px;">{{__('content.dateAdded')}}: {{date('Y-m-d', strtotime($product->created_at))}}</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group right">
-                            <a href="{{route('shop.view', [$product->category_name, $product->id])}}"
-                               class="btn btn-sm btn-outline-secondary">View</a>
-                            <a href="{{route('shop.delete', [$product->category_name, $product->id])}}"
-                               class="btn btn-sm btn-outline-secondary">Delete</a>
+                            <a href="{{route('shop.view', $product->id)}}"
+                               class="btn btn-sm btn-outline-secondary">{{__('navigation.view')}}</a>
+                            <a href="{{route('shop.delete', $product->id)}}"
+                               class="btn btn-sm btn-outline-secondary">{{__('navigation.delete')}}</a>
                         </div>
                     </div>
                 </div>

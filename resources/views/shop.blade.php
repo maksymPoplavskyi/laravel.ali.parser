@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <h1 class="mx-auto mt-5" style="width: 400px;">THIS IS SHOP PAGE</h1>
+    <h1 class="mx-auto mt-5" style="width: 400px;">{{__('content.shopTitle')}}</h1>
 
     <div class="album py-5">
         <div class="container">
@@ -24,15 +24,15 @@
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a href="{{route('shop.view', [$product->category_name, $product->id])}}"
-                                           class="btn btn-sm btn-outline-secondary">View</a>
-                                        <a href="{{route('shop.update.view', [$product->category_name, $product->id])}}"
-                                            class="btn btn-sm btn-outline-secondary">Edit</a>
-                                        <a href="{{route('shop.delete', [$product->category_name, $product->id])}}"
-                                            class="btn btn-sm btn-outline-secondary">Delete</a>
+                                        <a href="{{route('shop.view', $product->id)}}"
+                                           class="btn btn-sm btn-outline-secondary">{{__('navigation.view')}}</a>
+                                        <a href="{{route('shop.update.view', $product->id)}}"
+                                            class="btn btn-sm btn-outline-secondary">{{__('navigation.edit')}}</a>
+                                        <a href="{{route('shop.delete', $product->id)}}"
+                                            class="btn btn-sm btn-outline-secondary">{{__('navigation.delete')}}</a>
                                     </div>
-                                    <small class="text-muted">{{date('Y-m-d', strtotime($product->created_at))}}</small>
                                 </div>
+                                <div class="text-muted text-right"><small>{{date('Y-m-d', strtotime($product->created_at))}}</small></div>
                             </div>
                         </div>
                     </div>

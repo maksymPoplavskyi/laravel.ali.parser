@@ -1,10 +1,10 @@
 @extends('layouts.html')
 
-@section('title', $category_name)
+@section('title', $categoryName)
 
 @section('content')
 
-    <h1 class="mx-auto mt-5" style="max-width: 1200px;">THIS IS {{strtoupper($category_name)}} CATEGORY</h1>
+    <h1 class="mx-auto mt-5" style="max-width: 1200px;">{{strtoupper($categoryName)}} {{__('content.category')}}</h1>
 
     <div class="album py-5">
         <div class="container">
@@ -20,19 +20,19 @@
                                     <h3 style="font-weight: 700; opacity: .5; text-decoration: line-through">
                                         {{$product->old_price}} €</h3>
                                     <span class="badge badge-danger"
-                                          style="height: 30px;">%{{$product->sales}}</span>
+                                          style="height: 30px;">{{$product->sales}} %</span>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a href="{{route('shop.view', [$product->category_name, $product->id])}}"
-                                           class="btn btn-sm btn-outline-secondary">View</a>
-                                        <a href="{{route('shop.update.view', [$product->category_name, $product->id])}}"
-                                           class="btn btn-sm btn-outline-secondary">Edit</a>
-                                        <a href="{{route('shop.delete', [$product->category_name, $product->id])}}"
-                                           class="btn btn-sm btn-outline-secondary">Delete</a>
+                                        <a href="{{route('shop.view', $product->id)}}"
+                                           class="btn btn-sm btn-outline-secondary">{{__('navigation.view')}}</a>
+                                        <a href="{{route('shop.update.view', $product->id)}}"
+                                           class="btn btn-sm btn-outline-secondary">{{__('navigation.edit')}}</a>
+                                        <a href="{{route('shop.delete', $product->id)}}"
+                                           class="btn btn-sm btn-outline-secondary">{{__('navigation.delete')}}</a>
                                     </div>
-                                    <small class="text-muted">{{date('Y-m-d', strtotime($product->created_at))}}</small>
                                 </div>
+                                <div class="text-muted text-right"><small>{{date('Y-m-d', strtotime($product->created_at))}}</small></div>
                             </div>
                         </div>
                     </div>

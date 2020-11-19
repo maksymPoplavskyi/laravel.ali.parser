@@ -4,18 +4,20 @@
 namespace App\Repositories;
 
 
-use App\Models\Category as Model;
+use App\Models\Category;
+use Illuminate\Database\Eloquent\Model;
 
 class CategoryRepository extends CoreRepository
 {
 
-    public function getModel()
+    public function getModel(): Model
     {
-        return Model::getModel();
+        return Category::getModel();
     }
 
-    public function getCategoryById($id) :object
+    public function getCategoryByName($categoryName)
     {
-        return $this->model->find($id);
+        return $this->getModel()->where('name', $categoryName)->first();
     }
+
 }

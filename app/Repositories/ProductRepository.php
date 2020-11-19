@@ -4,91 +4,34 @@
 namespace App\Repositories;
 
 
-use App\Models\Product as Model;
-use Carbon\Carbon;
+use App\Models\Product;
+use Illuminate\Database\Eloquent\Model;
 
 class ProductRepository extends CoreRepository
 {
-    public function getModel()
+    public function getModel(): Model
     {
-        return Model::class;
+        return Product::getModel();
     }
 
-    public function getProductById($id)
+    public function getProductById($id): Product
     {
-        return $this->model::find($id);
+        return $this->getModel()::find($id);
     }
 
-    public function getProductCategory($id)
+    public function addProduct($attributes): Product
     {
-        return $this->model::find($id)->category()->first();
+        return $this->getModel()::create($attributes);
     }
 
-    public function getProductWithCategory($id): object
+    public function updateProduct($id, $attributes): bool
     {
-        return $this->model::select(['products.*', 'categories.id as category_id', 'categories.name as category_name'])
-            ->leftJoin('product_category', 'product_category.product_id', '=', 'products.id')
-            ->leftJoin('categories', 'product_category.category_id', '=', 'categories.id')
-            ->where('products.id', $id)
-            ->first();
+        return $this->getModel()::where('id', $id)
+            ->update($attributes);
     }
 
-    public function getAllProductsWithCategory()
+    public function deleteProduct($id): bool
     {
-        return $this->model::select(['products.*', 'categories.name as category_name'])
-            ->leftJoin('product_category', 'product_category.product_id', '=', 'products.id')
-            ->leftJoin('categories', 'product_category.category_id', '=', 'categories.id')
-            ->get();
-    }
-
-    public function getQuantityProductOfCategory($category)
-    {
-        return $this->model::select(['products.*', 'categories.id as cat_id', 'categories.name as category_name'])
-            ->leftJoin('product_category', 'product_category.product_id', '=', 'products.id')
-            ->leftJoin('categories', 'product_category.category_id', '=', 'categories.id')
-            ->where('categories.id', '=', $category)
-            ->count();
-    }
-
-    public function getAllProductsByCategory($category_name)
-    {
-        return $this->model::select(['products.*', 'categories.name as category_name'])
-            ->leftJoin('product_category', 'product_category.product_id', '=', 'products.id')
-            ->leftJoin('categories', 'product_category.category_id', '=', 'categories.id')
-            ->where('categories.name', '=', $category_name)
-            ->get();
-    }
-
-    public function addProductThenReturnId($request)
-    {
-        return $this->model::insertGetId([
-            'description' => $request->description,
-            'old_price' => $request->old_price,
-            'price' => $request->price,
-            'sales' => $request->sales,
-            'img_url' => $request->img_url,
-            'order_count' => $request->order_count,
-            'stock_availability' => $request->stock_availability,
-            'created_at' => Carbon::now()
-        ]);
-    }
-
-    public function updateProduct($productId, $request)
-    {
-        return $this->model::where('id', $productId)
-            ->update([
-                'description' => $request->description,
-                'old_price' => $request->old_price,
-                'price' => $request->price,
-                'sales' => $request->sales,
-                'img_url' => $request->img_url,
-                'order_count' => $request->order_count,
-                'stock_availability' => $request->stock_availability
-            ]);
-    }
-
-    public function deleteProduct($productId) :bool
-    {
-        return $this->model::where('id', $productId)->delete();
+        return $this->getModel()::where('id', $id)->delete();
     }
 }

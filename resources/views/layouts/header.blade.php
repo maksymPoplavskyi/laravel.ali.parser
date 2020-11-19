@@ -9,10 +9,10 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{route('home')}}">{{__('navigation.home')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('shop')}}">Shop</a>
+                <a class="nav-link" href="{{route('shop')}}">{{__('navigation.shop')}}</a>
             </li>
         </ul>
     </div>

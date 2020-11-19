@@ -4,11 +4,12 @@
 namespace App\Services;
 
 
+use App\Models\Category;
 use App\Repositories\CategoryRepository;
 
-class CategoryService extends MainService
+class CategoryService
 {
-    public function getCategoryById($id): object
+    public function getCategoryById($id): Category
     {
         return app(CategoryRepository::class)->getCategoryById($id);
     }

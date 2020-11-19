@@ -14,8 +14,17 @@ class Product extends Model
 
     public $timestamps = true;
 
+    protected $fillable = [
+        'category_id',
+        'description',
+        'old_price', 'price', 'sales',
+        'img_url',
+        'order_count', 'stock_availability',
+        'created_at', 'updated_at', 'deleted_at'
+    ];
+
     public function category()
     {
-        return $this->hasOne(ProductCategory::class);
+        return $this->belongsTo(Category::class);
     }
 }
