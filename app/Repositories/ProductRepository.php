@@ -14,14 +14,26 @@ class ProductRepository extends CoreRepository
         return Product::getModel();
     }
 
-    public function getProductById($id): Product
+    public function getAllProductsBaseLocale($locale)
     {
-        return $this->getModel()::find($id);
+        return $this->getModel()::select(['products.*', 'product_localization.localization_name', 'product_description as description'])
+            ->leftJoin('product_localization', 'products.id', '=', 'product_localization.product_id')
+            ->where('localization_name', $locale)
+            ->get();
     }
 
-    public function addProduct($attributes): Product
+    public function getProductById($id, $locale): Product
     {
-        return $this->getModel()::create($attributes);
+        return $this->getModel()::select(['products.*', 'product_localization.localization_name', 'product_description as description'])
+            ->leftJoin('product_localization', 'products.id', '=', 'product_localization.product_id')
+            ->where('products.id', $id)
+            ->where('localization_name', $locale)
+            ->first();
+    }
+
+    public function addProduct($attributes): int
+    {
+        return $this->getModel()::create($attributes)->id;
     }
 
     public function updateProduct($id, $attributes): bool

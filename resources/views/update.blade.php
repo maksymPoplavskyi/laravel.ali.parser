@@ -16,8 +16,8 @@
                 <label for="category">{{__('content.form.category')}}</label>
                 <select class="form-control" name="category_id">
                     @foreach($categories as $category)
-                        <option {{($category->name === $product->category->name) ? "selected='selected'" : ''}}
-                                value="{{$category->id}}">{{$category->name}}</option>
+                        <option {{($category->category_name === $product->category->name) ? "selected='selected'" : ''}}
+                                value="{{$category->category_id}}">{{$category->category_name}}</option>
                     @endforeach
                 </select>
                 @error('category_id')
@@ -26,9 +26,17 @@
             </div>
 
             <div class="form-group">
-                <label for="description">{{__('content.form.description')}}</label>
-                <textarea class="form-control" name="description" rows="2">{{$product->description}}</textarea>
-                @error('description')
+                <label for="description">{{__('content.form.descriptionEn')}}</label>
+                <textarea class="form-control" name="description_en" rows="2">{{$product->productLocalization->where('localization_name', 'en')->first()->product_description}}</textarea>
+                @error('description_en')
+                <span class="text-danger">{{$message}}</span>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="description">{{__('content.form.descriptionRu')}}</label>
+                <textarea class="form-control" name="description_ru" rows="2">{{$product->productLocalization->where('localization_name', 'ru')->first()->product_description}}</textarea>
+                @error('description_ru')
                 <span class="text-danger">{{$message}}</span>
                 @enderror
             </div>

@@ -13,7 +13,7 @@
             <label for="category">{{__('content.form.category')}}</label>
             <select class="form-control" name="category_id">
                 @foreach($categories as $category)
-                    <option value="{{$category->id}}">{{$category->name}}</option>
+                    <option value="{{$category->category_id}}">{{$category->category_name}}</option>
                 @endforeach
             </select>
             @error('category_id')
@@ -22,9 +22,17 @@
         </div>
 
         <div class="form-group">
-            <label for="description">{{__('content.form.description')}}</label>
-            <textarea class="form-control" name="description" rows="2">{{old('description')}}</textarea>
-            @error('description')
+            <label for="description">{{__('content.form.descriptionEn')}}</label>
+            <textarea class="form-control" name="description_en" rows="2">{{old('description_en')}}</textarea>
+            @error('description_en')
+            <span class="text-danger">{{$message}}</span>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="description">{{__('content.form.descriptionRu')}}</label>
+            <textarea class="form-control" name="description_ru" rows="2">{{old('description_ru')}}</textarea>
+            @error('description_ru')
             <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
