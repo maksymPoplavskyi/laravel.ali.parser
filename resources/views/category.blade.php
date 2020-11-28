@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <h1 class="mx-auto mt-5" style="max-width: 1200px;">{{strtoupper($categoryName)}} {{__('content.category')}}</h1>
+    <h1 class="mx-auto mt-5" style="max-width: 1200px;">{{($categoryName)}} </h1>
 
     <div class="album py-5">
         <div class="container">

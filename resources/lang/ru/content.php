@@ -7,9 +7,9 @@ return [
     'updateTitle' => 'редактирование продукта',
     'previewTitle' => 'предпросмотр товара',
     'createTitle' => 'Создать продукт',
+    'shop' => 'Магазин',
 
     'thisIs' => 'Это',
-    'category' => 'КАТЕГОРИЯ',
     'orders' => 'заказов',
     'inStock' => 'на складе',
     'dateAdded' => 'дата добавления',
@@ -17,7 +17,8 @@ return [
 //    create/update form
     'form' => [
         'category' => 'категория',
-        'description' => 'описание',
+        'descriptionEn' => 'описание на англ',
+        'descriptionRu' => 'описание на русском',
         'oldPrice' => 'старая цена',
         'sale' => 'скидка',
         'link' => 'ссылка на картинку',

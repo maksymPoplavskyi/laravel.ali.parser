@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductRequest;
 use App\Http\Requests\ShopCreateProductRequest;
 use App\Http\Requests\ShopUpdateProductRequest;
+use App\Repositories\CategoryLocalizationRepository;
 use App\Repositories\CategoryRepository;
+use App\Repositories\LocalizationRepository;
 use App\Repositories\ProductRepository;
 use App\Services\ProductService;
 use Illuminate\Support\Facades\App;
@@ -13,64 +15,69 @@ use Illuminate\Support\Facades\App;
 
 class ProductController extends Controller
 {
-    private $categories;
     private $productRepository;
     private $categoryRepository;
+    private $localizationRepository;
+    private $categoryLocalizationRepository;
     private $productsCount;
     private $productService;
+    private $localizations;
 
-    public function __construct(CategoryRepository $categoryRepository, ProductRepository $productRepository, ProductService $productService)
+    public function __construct(CategoryRepository $categoryRepository, ProductRepository $productRepository,
+                                ProductService $productService, LocalizationRepository $localizationRepository,
+                                CategoryLocalizationRepository $categoryLocalizationRepository)
     {
         $this->productRepository = $productRepository;
         $this->categoryRepository = $categoryRepository;
         $this->productService = $productService;
+        $this->localizationRepository = $localizationRepository;
+        $this->categoryLocalizationRepository = $categoryLocalizationRepository;
 
-        $this->categories = $this->categoryRepository->getAll();
         $this->productsCount = $this->productRepository->getAll()->count();
+        $this->localizations = $this->localizationRepository->getAll();
     }
 
     public function index()
     {
         return view('shop', [
-            'products' => $this->productRepository->getAll(),
-            'categories' => $this->categories,
-            'productsCount' => $this->productsCount
+            'products' => $this->productRepository->getAllProductsBaseLocale(App::getLocale()),
+            'categories' => $this->getCategories($this->categoryLocalizationRepository),
+            'productsCount' => $this->productsCount,
+            'localizations' => $this->localizations
         ]);
     }
 
     public function show($id, ProductRequest $request)
     {
         return view('product', [
-            'product' => $this->productRepository->getProductById($id),
-            'categories' => $this->categories,
-            'productsCount' => $this->productsCount
+            'product' => $this->productRepository->getProductById($id, App::getLocale()),
+            'categories' => $this->getCategories($this->categoryLocalizationRepository),
+            'productsCount' => $this->productsCount,
+            'localizations' => $this->localizations
         ]);
     }
 
     public function createView()
     {
         return view('create', [
-            'categories' => $this->categoryRepository->getAll(),
-            'productsCount' => $this->productsCount
+            'categories' => $this->getCategories($this->categoryLocalizationRepository),
+            'productsCount' => $this->productsCount,
+            'localizations' => $this->localizations
         ]);
     }
 
     public function createAction(ShopCreateProductRequest $request)
     {
-        return view('product', [
-            'product' => $this->productService->addProductAction($request),
-            'categories' => $this->categories,
-            'productsCount' => $this->productRepository->getAll()->count()
-        ]);
-
+        return redirect()->route('shop.view', ['id' => $this->productService->addProductAction($request)]);
     }
 
     public function updateView($id, ProductRequest $request)
     {
         return view('update', [
-            'product' => $this->productRepository->getProductById($id),
-            'categories' => $this->categories,
-            'productsCount' => $this->productsCount
+            'product' => $this->productRepository->getProductById($id, App::getLocale()),
+            'categories' => $this->getCategories($this->categoryLocalizationRepository),
+            'productsCount' => $this->productsCount,
+            'localizations' => $this->localizations
         ]);
     }
 
@@ -78,8 +85,9 @@ class ProductController extends Controller
     {
         return view('update', [
             'product' => $this->productService->updateProductAction($id, $request),
-            'categories' => $this->categories,
-            'productsCount' => $this->productsCount
+            'categories' => $this->getCategories($this->categoryLocalizationRepository),
+            'productsCount' => $this->productsCount,
+            'localizations' => $this->localizations
         ]);
     }
 

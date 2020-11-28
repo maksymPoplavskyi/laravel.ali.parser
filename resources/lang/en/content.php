@@ -7,9 +7,9 @@ return [
     'updateTitle' => 'Update product',
     'previewTitle' => 'Preview product',
     'createTitle' => 'Create product',
+    'shop' => 'Shop',
 
     'thisIs' => 'This is',
-    'category' => 'CATEGORY',
     'orders' => 'orders',
     'inStock' => 'in stock',
     'dateAdded' => 'date added',
@@ -17,7 +17,8 @@ return [
 //    create/update form
     'form' => [
         'category' => 'category',
-        'description' => 'description',
+        'descriptionEn' => 'english description',
+        'descriptionRu' => 'russian description',
         'oldPrice' => 'old price',
         'sale' => 'sale',
         'link' => 'link',

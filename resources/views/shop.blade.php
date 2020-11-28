@@ -1,6 +1,6 @@
 @extends('layouts.html')
 
-@section('title', 'Shop')
+@section('title', __('content.shop'))
 
 @section('content')
 
