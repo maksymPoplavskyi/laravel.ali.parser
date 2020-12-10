@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 
 class Category extends Model
 {
@@ -21,6 +22,6 @@ class Category extends Model
 
     public function categoryLocalization()
     {
-        return $this->hasMany(CategoryLocalization::class);
+        return $this->hasMany(CategoryLocalization::class)->where('lang', App::getLocale());
     }
 }

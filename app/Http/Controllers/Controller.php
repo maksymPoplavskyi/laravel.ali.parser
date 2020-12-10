@@ -11,9 +11,4 @@ use Illuminate\Support\Facades\App;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
-    protected function getCategories($categoryLocalizationRepository)
-    {
-        return $categoryLocalizationRepository->getCategoryBasedLocale(App::getLocale());
-    }
 }

@@ -2,25 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductRequest;
-use App\Http\Requests\ShopCreateProductRequest;
-use App\Http\Requests\ShopUpdateProductRequest;
+use App\Http\Requests\CreateUpdateProductRequest;
+use App\Http\Requests\UpdateProductRequest;
+use App\Models\Localization;
+use App\Models\Product;
 use App\Repositories\CategoryLocalizationRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\LocalizationRepository;
 use App\Repositories\ProductRepository;
 use App\Services\ProductService;
-use Illuminate\Support\Facades\App;
 
 
 class ProductController extends Controller
 {
+    /** @var ProductRepository $productRepository */
     private $productRepository;
+    /** @var CategoryRepository $categoryRepository */
     private $categoryRepository;
+    /** @var LocalizationRepository $localizationRepository */
     private $localizationRepository;
+    /** @var CategoryLocalizationRepository $categoryLocalizationRepository */
     private $categoryLocalizationRepository;
+    /** @var int $productsCount */
     private $productsCount;
+    /** @var ProductService $productService */
     private $productService;
+    /** @var Localization $localizations */
     private $localizations;
 
     public function __construct(CategoryRepository $categoryRepository, ProductRepository $productRepository,
@@ -40,18 +47,18 @@ class ProductController extends Controller
     public function index()
     {
         return view('shop', [
-            'products' => $this->productRepository->getAllProductsBaseLocale(App::getLocale()),
-            'categories' => $this->getCategories($this->categoryLocalizationRepository),
+            'products' => $this->productRepository->getAllProductsBaseLocale(),
+            'categories' => $this->categoryRepository->getCategoriesBasedLocale(),
             'productsCount' => $this->productsCount,
             'localizations' => $this->localizations
         ]);
     }
 
-    public function show($id, ProductRequest $request)
+    public function show(Product $product)
     {
         return view('product', [
-            'product' => $this->productRepository->getProductById($id, App::getLocale()),
-            'categories' => $this->getCategories($this->categoryLocalizationRepository),
+            'product' => $this->productRepository->getProduct($product),
+            'categories' => $this->categoryRepository->getCategoriesBasedLocale(),
             'productsCount' => $this->productsCount,
             'localizations' => $this->localizations
         ]);
@@ -60,28 +67,28 @@ class ProductController extends Controller
     public function createView()
     {
         return view('create', [
-            'categories' => $this->getCategories($this->categoryLocalizationRepository),
+            'categories' => $this->categoryRepository->getCategoriesBasedLocale(),
             'productsCount' => $this->productsCount,
             'localizations' => $this->localizations
         ]);
     }
 
-    public function createAction(ShopCreateProductRequest $request)
+    public function createAction(CreateUpdateProductRequest $request)
     {
         return redirect()->route('shop.view', ['id' => $this->productService->addProductAction($request)]);
     }
 
-    public function updateView($id, ProductRequest $request)
+    public function updateView(Product $product)
     {
         return view('update', [
-            'product' => $this->productRepository->getProductById($id, App::getLocale()),
+            'product' => $this->productRepository->getProduct($product),
             'categories' => $this->getCategories($this->categoryLocalizationRepository),
             'productsCount' => $this->productsCount,
             'localizations' => $this->localizations
         ]);
     }
 
-    public function updateAction($id, ShopUpdateProductRequest $request)
+    public function updateAction($id, UpdateProductRequest $request)
     {
         return view('update', [
             'product' => $this->productService->updateProductAction($id, $request),

@@ -3,11 +3,8 @@
 namespace App\Http\Requests;
 
 
-class ShopUpdateProductRequest extends MainRequest
+class CreateUpdateProductRequest extends MainRequest
 {
-
-    private $validationsMessage;
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -27,8 +24,8 @@ class ShopUpdateProductRequest extends MainRequest
     {
         return [
             'category_id' => self::INTEGER,
-            'description_en' => 'required|between:5,255',
-            'description_ru' => 'required|between:5,255',
+            'description_en' => 'required|between:2,255',
+            'description_ru' => 'required|between:2,255',
             'old_price' => self::NUMBER,
             'sales' => 'required|numeric|between:1,100',
             'img_url' => 'required|url|max:255',
@@ -37,8 +34,4 @@ class ShopUpdateProductRequest extends MainRequest
         ];
     }
 
-    public function messages()
-    {
-        return $this->validationMassages();
-    }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.html')
 
-@section('title', $product->description)
+@section('title', $product->value)
 
 @section('content')
 
@@ -14,7 +14,7 @@
             <div class="col-8">
                 <div class="row">
                     <div class="col">
-                        <p style="font-size: 20px;">{{$product->description}}</p>
+                        <p style="font-size: 20px;">{{$product->value}}</p>
                     </div>
                 </div>
                 <div class="row">

@@ -25,13 +25,13 @@ Route::prefix('/shop')->group(function () {
     Route::get('/create', [ProductController::class, 'createView'])->name('shop.create.view');
     Route::post('/create', [ProductController::class, 'createAction'])->name('shop.create');
 
-    Route::get('/update/{id}', [ProductController::class, 'updateView'])->name('shop.update.view');
-    Route::patch('/update/{id}', [ProductController::class, 'updateAction'])->name('shop.update');
+    Route::get('/update/{product_id}', [ProductController::class, 'updateView'])->name('shop.update.view');
+    Route::patch('/update/{product_id}', [ProductController::class, 'updateAction'])->name('shop.update');
 
-    Route::get('/{category}', [CategoryController::class, 'index'])->name('shop.category');
-    Route::get('/product/{id}', [ProductController::class, 'show'])->name('shop.view');
+    Route::get('/{category_slug}', [CategoryController::class, 'index'])->name('shop.category');
+    Route::get('/product/{product_id}', [ProductController::class, 'show'])->name('shop.view');
 
-    Route::get('/delete/{id}', [ProductController::class, 'deleteAction'])->name('shop.delete');
+    Route::get('/delete/{product_id}', [ProductController::class, 'deleteAction'])->name('shop.delete');
 });
 
 Route::get('/{locale}', function ($locale) {

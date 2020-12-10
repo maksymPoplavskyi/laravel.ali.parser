@@ -27,7 +27,7 @@
 
             <div class="form-group">
                 <label for="description">{{__('content.form.descriptionEn')}}</label>
-                <textarea class="form-control" name="description_en" rows="2">{{$product->productLocalization->where('localization_name', 'en')->first()->product_description}}</textarea>
+                <textarea class="form-control" name="description_en" rows="2">{{$product->productLocalizations->where('localization_name', 'en')->first()->product_description}}</textarea>
                 @error('description_en')
                 <span class="text-danger">{{$message}}</span>
                 @enderror
@@ -35,7 +35,7 @@
 
             <div class="form-group">
                 <label for="description">{{__('content.form.descriptionRu')}}</label>
-                <textarea class="form-control" name="description_ru" rows="2">{{$product->productLocalization->where('localization_name', 'ru')->first()->product_description}}</textarea>
+                <textarea class="form-control" name="description_ru" rows="2">{{$product->productLocalizations->where('localization_name', 'ru')->first()->product_description}}</textarea>
                 @error('description_ru')
                 <span class="text-danger">{{$message}}</span>
                 @enderror

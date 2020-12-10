@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 
 class Product extends Model
 {
@@ -28,8 +29,8 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function productLocalization()
+    public function productLocalizations()
     {
-        return $this->hasMany(ProductLocalization::class);
+        return $this->hasMany(ProductLocalization::class)->where('lang', App::getLocale());
     }
 }

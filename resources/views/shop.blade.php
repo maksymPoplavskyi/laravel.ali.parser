@@ -14,7 +14,7 @@
                         <div class="card mb-4 shadow-sm">
                             <img class="card-img-top" src="{{$product->img_url}}">
                             <div class="card-body">
-                                <p class="card-text text-truncate">{{$product->description}}</p>
+                                <p class="card-text text-truncate">{{$product->value}}</p>
                                 <div class="d-flex justify-content-between">
                                     <h3 style="font-weight: 700;">{{$product->price}} €</h3>
                                     <h3 style="font-weight: 700; opacity: .5; text-decoration: line-through">

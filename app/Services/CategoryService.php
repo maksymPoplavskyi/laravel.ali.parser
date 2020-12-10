@@ -4,13 +4,15 @@
 namespace App\Services;
 
 
-use App\Models\Category;
 use App\Repositories\CategoryRepository;
 
 class CategoryService
 {
-    public function getCategoryById($id): Category
+    /** @var CategoryRepository $repository */
+    private $repository;
+
+    public function __construct(CategoryRepository $repository)
     {
-        return app(CategoryRepository::class)->getCategoryById($id);
+        $this->repository = $repository;
     }
 }
