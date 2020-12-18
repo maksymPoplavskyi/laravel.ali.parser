@@ -4,14 +4,14 @@
 namespace App\Services;
 
 
-use App\DTO\ProductDataDTO;
+use App\DTO\ProductData;
 use App\Http\Requests\CreateUpdateProductRequest;
 use App\Repositories\ProductLocalizationRepository;
 use App\Repositories\ProductRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\App;
 
-class ProductService
+class ProductService extends ProductData
 {
     /** @var ProductRepository $productRepository */
     private $productRepository;
@@ -27,18 +27,11 @@ class ProductService
     public function addProductAction(CreateUpdateProductRequest $request): int
     {
 
-//        $q = ProductDataDTO::createProductLocalizationData($request->get('category_id'),
-//            $request->get('description_en'),
-//            $request->get('description_ru'));
-//        dd($q);
-//        dd($request);
-//        $requestData = $this->makeProductData($request->validated());
+        $dto = new ProductData($request);
+        $obj = $dto->createProductData($request);
+        dd($obj->category_id);
 
-        $dto = new ProductDataDTO();
-        $productData = $dto->createProductData($request);
-        dd($productData);
-
-        $newProductId = $this->productRepository->addProduct(ProductDataDTO::createProductData($request));
+        $newProductId = $this->productRepository->addProduct($dto->createProductData($request));
         dd($newProductId);
 
         $this->productLocalizationRepository->createProductLocalization($newProductId, 'en', $request['description_en']);

@@ -2,42 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcc9cc46-b52c-4028-a887-66da4942af20" name="Default Changelist" comment="refactoring CRUD methods, add translate to content">
-      <change afterPath="$PROJECT_DIR$/app/DTO/ProductDataDTO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Repositories/RepositoryInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_01_193311_change_index_name_column_on_categories_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_01_193609_change_column_names_category_localization_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_01_193922_change_name_column_on_localization_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_01_194305_change_column_names_product_localization_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/ru/validation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/bootstrap-4.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/DTO/ProductData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/laravel.ali.parser.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel.ali.parser.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CategoryRequest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/MainRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/MainRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/ProductRequest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/ShopCreateProductRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CreateUpdateProductRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/ShopUpdateProductRequest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/CategoryLocalizationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/CategoryLocalizationRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/CategoryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/CategoryRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/CoreRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/CoreRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/ProductLocalizationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/ProductLocalizationRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/DTO/ProductDataDTO.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DTO/ProductDataExt.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repositories/ProductRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/ProductRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/CategoryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/CategoryService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/ProductService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/ProductService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/validation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/category.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/shop.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/shop.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/update.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,6 +147,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
       <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
       <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/spatie/data-transfer-object" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jjTrvPhiF2Uq0czRuXBVLAIDOB" />
@@ -189,7 +164,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
     <property name="database.data.extractors.current.id" value="SQL Inserts" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Cheitgroup/pegasus" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Cheitgroup/BabyOnlineShop" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
@@ -197,14 +172,15 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\web\OpenServer\domains\laravel.ali.parser\app\DTO" />
+      <recent name="D:\web\OpenServer\domains\laravel.ali.parser\resources\lang\ru" />
+      <recent name="D:\web\OpenServer\domains\laravel.ali.parser\public\css" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\web\OpenServer\domains\laravel.ali.parser\resources\views" />
       <recent name="D:\web\OpenServer\domains\laravel.ali.parser\public\css" />
       <recent name="D:\web\OpenServer\domains\laravel.ali.parser\app" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\web\OpenServer\domains\laravel.ali.parser\resources\lang\ru" />
-      <recent name="D:\web\OpenServer\domains\laravel.ali.parser\public\css" />
     </key>
   </component>
   <component name="RunManager">
@@ -237,7 +213,19 @@
       <workItem from="1607257876060" duration="4894000" />
       <workItem from="1607282778373" duration="1684000" />
       <workItem from="1607327670904" duration="906000" />
-      <workItem from="1607600039709" duration="4455000" />
+      <workItem from="1607600039709" duration="5558000" />
+      <workItem from="1607633657289" duration="2862000" />
+      <workItem from="1607674005936" duration="601000" />
+      <workItem from="1607678544643" duration="1771000" />
+      <workItem from="1607851024858" duration="3540000" />
+      <workItem from="1607881754736" duration="4113000" />
+      <workItem from="1607937092630" duration="915000" />
+      <workItem from="1608024733278" duration="3556000" />
+      <workItem from="1608049810499" duration="1781000" />
+      <workItem from="1608105490424" duration="1800000" />
+      <workItem from="1608196488141" duration="1229000" />
+      <workItem from="1608280573686" duration="2217000" />
+      <workItem from="1608316461566" duration="1152000" />
     </task>
     <servers />
   </component>
@@ -265,18 +253,18 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="605" y="112" key="#com.intellij.ide.util.MemberChooser/0.0.1600.860@0.0.1600.860" timestamp="1607260012470" />
-    <state x="572" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1607074542977">
+    <state x="572" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1607862121568">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="572" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.860@0.0.1600.860" timestamp="1607074542977" />
+    <state x="572" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.860@0.0.1600.860" timestamp="1607862121568" />
     <state x="530" y="185" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1607070510982">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="530" y="185" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1607070510982" />
-    <state x="580" y="185" key="FileChooserDialogImpl" timestamp="1607617985301">
+    <state x="580" y="185" key="FileChooserDialogImpl" timestamp="1608284432687">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="580" y="185" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1607617985301" />
+    <state x="580" y="185" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1608284432687" />
     <state width="1100" height="241" key="GridCell.Tab.0.bottom" timestamp="1604443287386">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -325,6 +313,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="666" y="296" width="250" height="278" key="jetbrains.javascript.buildTools.run-task-popup/0.0.1600.860@0.0.1600.860" timestamp="1606864353698" />
+    <state x="643" y="188" key="refactoring.ChangeSignatureDialog" timestamp="1607899007773">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="643" y="188" key="refactoring.ChangeSignatureDialog/0.0.1600.860@0.0.1600.860" timestamp="1607899007773" />
     <state x="456" y="195" key="run.anything.popup" timestamp="1606853961644">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

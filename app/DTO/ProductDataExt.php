@@ -5,8 +5,9 @@ namespace App\DTO;
 
 
 use App\Http\Requests\CreateUpdateProductRequest;
+use Spatie\DataTransferObject\DataTransferObject;
 
-class ProductDataDTO
+class ProductDataExt extends DataTransferObject
 {
     /** @var int $category_id */
     protected $category_id;
@@ -25,8 +26,13 @@ class ProductDataDTO
     /** @var int $stock_availability */
     protected $stock_availability;
 
-    public function __construct()
+    /**
+     * ProductDataExt constructor.
+     * @param array $parameters
+     */
+    public function __construct(array $parameters = [])
     {
+        parent::__construct($parameters);
     }
 
     public static function createProductLocalizationData(int $categoryId, string $en, string $ru)
@@ -36,7 +42,7 @@ class ProductDataDTO
         $obj->setDescriptionEn($en);
         $obj->setDescriptionRu($ru);
 
-        $obj->deleteNullElement($obj);
+//        $obj->deleteNullElement($obj);
 
         return $obj;
     }
@@ -51,7 +57,7 @@ class ProductDataDTO
         $obj->setOrderCount($request->get('order_count'));
         $obj->setStockAvailability($request->get('stock_availability'));
 
-        $obj->deleteNullElement($obj);
+//        $obj->deleteNullElement($obj);
 
         return $obj;
     }

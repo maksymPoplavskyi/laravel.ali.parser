@@ -39,6 +39,8 @@
                 @endforeach
             </div>
 
+            {{ $products->render('pagination::bootstrap-4') }}
+
         </div>
     </div>
 

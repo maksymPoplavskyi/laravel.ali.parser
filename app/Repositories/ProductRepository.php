@@ -44,7 +44,14 @@ class ProductRepository extends CoreRepository
 
     public function addProduct($attributes): int
     {
-        return $this->getModel()::create($attributes)->id;
+        return $this->getModel()::create([
+            'category_id' => $attributes->category_id,
+            'old_price' => $attributes->old_price,
+            'sales' => $attributes->sales,
+            'img_url' => $attributes->img_url,
+            'order_count' => $attributes->order_count,
+            'stock_availability' => $attributes->stock_availability,
+        ])->id;
     }
 
     public function updateProduct($id, $attributes): bool
