@@ -49,7 +49,7 @@
             <a href="{{route('shop.update.view', $product->id)}}"
                class="btn btn-sm btn-outline-secondary">{{__('navigation.edit')}}</a>
             <a href="{{route('shop.delete', $product->id)}}"
-               class="btn btn-sm btn-outline-secondary">{{__('navigation.delete')}}</a>
+               class="btn btn-sm btn-outline-secondary" onclick="return confirm('Are you sure?')">{{__('navigation.delete')}}</a>
         </div>
 
     </div>

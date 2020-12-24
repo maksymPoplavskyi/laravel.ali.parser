@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUpdateProductRequest;
-use App\Http\Requests\UpdateProductRequest;
 use App\Models\Localization;
 use App\Models\Product;
 use App\Repositories\CategoryLocalizationRepository;
@@ -75,32 +74,32 @@ class ProductController extends Controller
 
     public function createAction(CreateUpdateProductRequest $request)
     {
-        return redirect()->route('shop.view', ['id' => $this->productService->addProductAction($request)]);
+        return redirect()->route('shop.view', [$this->productService->addProductAction($request)]);
     }
 
     public function updateView(Product $product)
     {
         return view('update', [
             'product' => $this->productRepository->getProduct($product),
-            'categories' => $this->getCategories($this->categoryLocalizationRepository),
+            'categories' => $this->categoryRepository->getCategoriesBasedLocale(),
             'productsCount' => $this->productsCount,
             'localizations' => $this->localizations
         ]);
     }
 
-    public function updateAction($id, UpdateProductRequest $request)
+    public function updateAction($product, CreateUpdateProductRequest $request)
     {
         return view('update', [
-            'product' => $this->productService->updateProductAction($id, $request),
-            'categories' => $this->getCategories($this->categoryLocalizationRepository),
+            'product' => $this->productService->updateProductAction($product, $request),
+            'categories' => $this->categoryRepository->getCategoriesBasedLocale(),
             'productsCount' => $this->productsCount,
             'localizations' => $this->localizations
         ]);
     }
 
-    public function deleteAction($id, ProductRequest $request)
+    public function deleteAction(Product $product)
     {
-        $this->productService->deleteProductAction($id);
+        $this->productService->deleteProductAction($product->id);
 
         $previousRoute = app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName();
 

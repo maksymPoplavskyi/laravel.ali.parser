@@ -37,54 +37,14 @@ class ProductData
         $this->setImgUrl($request->get('img_url'));
         $this->setOrderCount($request->get('order_count'));
         $this->setStockAvailability($request->get('stock_availability'));
-    }
-
-    public static function createProductLocalizationData(int $categoryId, string $en, string $ru)
-    {
-        $obj = new self();
-        $obj->setCategoryId($categoryId);
-        $obj->setDescriptionEn($en);
-        $obj->setDescriptionRu($ru);
-
-        $obj->deleteNullElement($obj);
-
-        return $obj;
-    }
-
-    public static function createProductData(CreateUpdateProductRequest $request)
-    {
-        $obj = new self($request);
-        $obj->getCategoryId();
-        $obj->getOldPrice();
-        $obj->getSales();
-        $obj->getImgUrl();
-        $obj->getOrderCount();
-        $obj->getStockAvailability();
-
-        $obj->deleteNullElement($obj);
-
-        return $obj;
-
-
-        return new self([
-            'title' => $request->input('title'),
-            'body' => $request->input('body'),
-            'author' => Author::find($request->input('author_id')),
-        ]);
-    }
-
-    private static function deleteNullElement(Object $obj) {
-        foreach ($obj as $key => $value) {
-            if ($value === null) {
-                unset($obj->{$key});
-            }
-        }
+        $this->setDescriptionRu($request->get('description_ru'));
+        $this->setDescriptionEn($request->get('description_en'));
     }
 
     /**
      * @return int
      */
-    protected function getCategoryId(): int
+    public function getCategoryId(): int
     {
         return $this->category_id;
     }
@@ -100,7 +60,7 @@ class ProductData
     /**
      * @return string
      */
-    protected function getDescriptionEn(): string
+    public function getDescriptionEn(): string
     {
         return $this->description_en;
     }
@@ -116,7 +76,7 @@ class ProductData
     /**
      * @return string
      */
-    protected function getDescriptionRu(): string
+    public function getDescriptionRu(): string
     {
         return $this->description_ru;
     }
@@ -132,7 +92,7 @@ class ProductData
     /**
      * @return float
      */
-    protected function getOldPrice(): float
+    public function getOldPrice(): float
     {
         return $this->old_price;
     }
@@ -148,7 +108,7 @@ class ProductData
     /**
      * @return int
      */
-    protected function getSales(): int
+    public function getSales(): int
     {
         return $this->sales;
     }
@@ -164,7 +124,7 @@ class ProductData
     /**
      * @return string
      */
-    protected function getImgUrl(): string
+    public function getImgUrl(): string
     {
         return $this->img_url;
     }
@@ -180,7 +140,7 @@ class ProductData
     /**
      * @return int
      */
-    protected function getOrderCount(): int
+    public function getOrderCount(): int
     {
         return $this->order_count;
     }
@@ -196,7 +156,7 @@ class ProductData
     /**
      * @return int
      */
-    protected function getStockAvailability(): int
+    public function getStockAvailability(): int
     {
         return $this->stock_availability;
     }
@@ -208,8 +168,5 @@ class ProductData
     {
         $this->stock_availability = $stock_availability;
     }
-
-
-
 
 }

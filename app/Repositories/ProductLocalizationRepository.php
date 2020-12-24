@@ -6,7 +6,6 @@ namespace App\Repositories;
 
 use App\Models\ProductLocalization;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\App;
 
 class ProductLocalizationRepository extends CoreRepository
 {
@@ -16,12 +15,12 @@ class ProductLocalizationRepository extends CoreRepository
         return ProductLocalization::getModel();
     }
 
-    public function createProductLocalization($productId, $productDescription): void
+    public function createProductLocalization($id, $lang, $value): void
     {
         $this->getModel()::create([
-            'product_id' => $productId,
-            'lang' => App::getLocale(),
-            'product_description' => $productDescription
+            'product_id' => $id,
+            'lang' => $lang,
+            'value' => $value
         ]);
     }
 
@@ -30,12 +29,12 @@ class ProductLocalizationRepository extends CoreRepository
         $this->getModel()::where('product_id', $productId)->delete();
     }
 
-    public function updateProductLocalization($productId, $attributes)
+    public function updateProductLocalization($id, $attributes)
     {
         foreach ($attributes as $locale => $content) {
-            $this->getModel()::where('product_id', $productId)
-                ->where('localization_name', $locale)
-                ->update(['product_description' => $content]);
+            $this->getModel()::where('product_id', $id)
+                ->where('lang', $locale)
+                ->update(['value' => $content]);
         }
     }
 }

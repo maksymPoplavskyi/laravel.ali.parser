@@ -42,16 +42,19 @@ class ProductRepository extends CoreRepository
             ->first();
     }
 
-    public function addProduct($attributes): int
+    public function getProductById($id): Product
     {
-        return $this->getModel()::create([
-            'category_id' => $attributes->category_id,
-            'old_price' => $attributes->old_price,
-            'sales' => $attributes->sales,
-            'img_url' => $attributes->img_url,
-            'order_count' => $attributes->order_count,
-            'stock_availability' => $attributes->stock_availability,
-        ])->id;
+        return $this->getModel()->where('products.id', $id)
+            ->select(['products.*', 'value'])
+            ->leftJoin('product_localization', 'products.id', '=', 'product_localization.product_id')
+            ->where('products.id', $id)
+            ->where('lang', App::getLocale())
+            ->first();
+    }
+
+    public function addProduct(array $attributes): int
+    {
+        return $this->getModel()::create($attributes)->id;
     }
 
     public function updateProduct($id, $attributes): bool

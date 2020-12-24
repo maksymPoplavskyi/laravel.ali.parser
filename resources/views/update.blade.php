@@ -16,8 +16,8 @@
                 <label for="category">{{__('content.form.category')}}</label>
                 <select class="form-control" name="category_id">
                     @foreach($categories as $category)
-                        <option {{($category->category_name === $product->category->name) ? "selected='selected'" : ''}}
-                                value="{{$category->category_id}}">{{$category->category_name}}</option>
+                        <option {{($category->id === $product->category_id) ? 'selected' : ''}}
+                                value="{{$category->id}}">{{$category->value}}</option>
                     @endforeach
                 </select>
                 @error('category_id')
@@ -27,7 +27,7 @@
 
             <div class="form-group">
                 <label for="description">{{__('content.form.descriptionEn')}}</label>
-                <textarea class="form-control" name="description_en" rows="2">{{$product->productLocalizations->where('localization_name', 'en')->first()->product_description}}</textarea>
+                <textarea class="form-control" name="description_en" rows="2">{{old('description_en')}}</textarea>
                 @error('description_en')
                 <span class="text-danger">{{$message}}</span>
                 @enderror
@@ -35,7 +35,7 @@
 
             <div class="form-group">
                 <label for="description">{{__('content.form.descriptionRu')}}</label>
-                <textarea class="form-control" name="description_ru" rows="2">{{$product->productLocalizations->where('localization_name', 'ru')->first()->product_description}}</textarea>
+                <textarea class="form-control" name="description_ru" rows="2">{{old('description_ru')}}</textarea>
                 @error('description_ru')
                 <span class="text-danger">{{$message}}</span>
                 @enderror
@@ -136,11 +136,11 @@
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group right">
+                        <div class="btn-group right" style="margin-top: 20px">
                             <a href="{{route('shop.view', $product->id)}}"
                                class="btn btn-sm btn-outline-secondary">{{__('navigation.view')}}</a>
                             <a href="{{route('shop.delete', $product->id)}}"
-                               class="btn btn-sm btn-outline-secondary">{{__('navigation.delete')}}</a>
+                               class="btn btn-sm btn-outline-secondary" onclick="return confirm('Are you sure?')">{{__('navigation.delete')}}</a>
                         </div>
                     </div>
                 </div>
