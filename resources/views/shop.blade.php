@@ -14,7 +14,7 @@
                         <div class="card mb-4 shadow-sm">
                             <img class="card-img-top" src="{{$product->img_url}}">
                             <div class="card-body">
-                                <p class="card-text text-truncate">{{$product->description}}</p>
+                                <p class="card-text text-truncate">{{$product->value}}</p>
                                 <div class="d-flex justify-content-between">
                                     <h3 style="font-weight: 700;">{{$product->price}} €</h3>
                                     <h3 style="font-weight: 700; opacity: .5; text-decoration: line-through">
@@ -29,7 +29,7 @@
                                         <a href="{{route('shop.update.view', $product->id)}}"
                                             class="btn btn-sm btn-outline-secondary">{{__('navigation.edit')}}</a>
                                         <a href="{{route('shop.delete', $product->id)}}"
-                                            class="btn btn-sm btn-outline-secondary">{{__('navigation.delete')}}</a>
+                                            class="btn btn-sm btn-outline-secondary" onclick="return confirm('Are you sure?')">{{__('navigation.delete')}}</a>
                                     </div>
                                 </div>
                                 <div class="text-muted text-right"><small>{{date('Y-m-d', strtotime($product->created_at))}}</small></div>
@@ -38,6 +38,8 @@
                     </div>
                 @endforeach
             </div>
+
+            {{ $products->render('pagination::bootstrap-4') }}
 
         </div>
     </div>

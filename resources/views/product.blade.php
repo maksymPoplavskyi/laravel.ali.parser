@@ -1,6 +1,6 @@
 @extends('layouts.html')
 
-@section('title', $product->description)
+@section('title', $product->value)
 
 @section('content')
 
@@ -14,7 +14,7 @@
             <div class="col-8">
                 <div class="row">
                     <div class="col">
-                        <p style="font-size: 20px;">{{$product->description}}</p>
+                        <p style="font-size: 20px;">{{$product->value}}</p>
                     </div>
                 </div>
                 <div class="row">
@@ -49,7 +49,7 @@
             <a href="{{route('shop.update.view', $product->id)}}"
                class="btn btn-sm btn-outline-secondary">{{__('navigation.edit')}}</a>
             <a href="{{route('shop.delete', $product->id)}}"
-               class="btn btn-sm btn-outline-secondary">{{__('navigation.delete')}}</a>
+               class="btn btn-sm btn-outline-secondary" onclick="return confirm('Are you sure?')">{{__('navigation.delete')}}</a>
         </div>
 
     </div>

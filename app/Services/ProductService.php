@@ -4,14 +4,17 @@
 namespace App\Services;
 
 
+use App\DTO\ProductData;
+use App\Http\Requests\CreateUpdateProductRequest;
 use App\Repositories\ProductLocalizationRepository;
 use App\Repositories\ProductRepository;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\App;
 
 class ProductService
 {
+    /** @var ProductRepository $productRepository */
     private $productRepository;
+    /** @var ProductLocalizationRepository $productLocalizationRepository */
     private $productLocalizationRepository;
 
     public function __construct(ProductRepository $productRepository, ProductLocalizationRepository $productLocalizationRepository)
@@ -20,46 +23,53 @@ class ProductService
         $this->productLocalizationRepository = $productLocalizationRepository;
     }
 
-    public function addProductAction($request): int
+    public function addProductAction(CreateUpdateProductRequest $request): int
     {
-        $requestData = $this->makeProductData($request);
 
-        $newProductId = $this->productRepository->addProduct($requestData);
-        $this->productLocalizationRepository->createProductLocalization($newProductId, 'en', $request->validated()['description_en']);
-        $this->productLocalizationRepository->createProductLocalization($newProductId, 'ru', $request->validated()['description_ru']);
+        $dto = new ProductData($request);
+        $attributes = $this->makeProductData($dto);
+
+        $newProductId = $this->productRepository->addProduct($attributes);
+
+        $this->productLocalizationRepository->createProductLocalization($newProductId, 'en', $dto->getDescriptionEn());
+        $this->productLocalizationRepository->createProductLocalization($newProductId, 'ru', $dto->getDescriptionRu());
 
         return $newProductId;
     }
 
-    public function updateProductAction($id, $request): Model
+    public function updateProductAction($product, CreateUpdateProductRequest $request): Model
     {
-        $requestData = $this->makeProductData($request);
-        $this->productRepository->updateProduct($id, $requestData);
+        $dto = new ProductData($request);
+        $attributes = $this->makeProductData($dto);
 
-        $attributes = [
-            'en' => $request->validated()['description_en'],
-            'ru' => $request->validated()['description_ru'],
+        $this->productRepository->updateProduct($product->id, $attributes);
+
+        $langData = [
+            'en' => $dto->getDescriptionEn(),
+            'ru' => $dto->getDescriptionRu()
         ];
 
-        $this->productLocalizationRepository->updateProductLocalization($id, $attributes);
+        $this->productLocalizationRepository->updateProductLocalization($product->id, $langData);
 
-        return $this->productRepository->getProductById($id, App::getLocale());
+        return $this->productRepository->getProductById($product->id);
     }
 
-    public function deleteProductAction($productId)
+    public function deleteProductAction(int $id): bool
     {
-        $this->productLocalizationRepository->deleteProductLocalization($productId);
-        return $this->productRepository->deleteProduct($productId);
+        $this->productLocalizationRepository->deleteProductLocalization($id);
+        return $this->productRepository->deleteProduct($id);
     }
 
-    private function makeProductData($request): array
+    private function makeProductData(ProductData $dto): array
     {
-        $requestData = $request->validated();
-        unset($requestData['description_en']);
-        unset($requestData['description_ru']);
-        $newPrice = $requestData['old_price'] - $requestData['old_price'] * ($requestData['sales'] / 100);
-        $requestData['price'] = round($newPrice, 2);
-
-        return $requestData;
+        return [
+            'category_id' => $dto->getCategoryId(),
+            'old_price' => $dto->getOldPrice(),
+            'sales' => $dto->getSales(),
+            'img_url' => $dto->getImgUrl(),
+            'order_count' => $dto->getOrderCount(),
+            'stock_availability' => $dto->getStockAvailability(),
+            'price' => round($dto->getOldPrice() - $dto->getOldPrice() * ($dto->getSales() / 100))
+        ];
     }
 }

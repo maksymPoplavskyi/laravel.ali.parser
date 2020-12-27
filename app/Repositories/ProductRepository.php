@@ -6,6 +6,8 @@ namespace App\Repositories;
 
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\App;
 
 class ProductRepository extends CoreRepository
 {
@@ -14,24 +16,43 @@ class ProductRepository extends CoreRepository
         return Product::getModel();
     }
 
-    public function getAllProductsBaseLocale($locale)
+    public function getAllProductsBaseLocale(): LengthAwarePaginator
     {
-        return $this->getModel()::select(['products.*', 'product_localization.localization_name', 'product_description as description'])
+        return $this->getModel()::select(['products.*', 'value'])
             ->leftJoin('product_localization', 'products.id', '=', 'product_localization.product_id')
-            ->where('localization_name', $locale)
-            ->get();
+            ->where('lang', App::getLocale())
+            ->paginate(6);
     }
 
-    public function getProductById($id, $locale): Product
+    public function getAllProductsByCategoryBaseLocale($categoryId): LengthAwarePaginator
     {
-        return $this->getModel()::select(['products.*', 'product_localization.localization_name', 'product_description as description'])
+        return $this->getModel()::select(['products.*', 'value'])
             ->leftJoin('product_localization', 'products.id', '=', 'product_localization.product_id')
-            ->where('products.id', $id)
-            ->where('localization_name', $locale)
+            ->where('category_id', $categoryId)
+            ->where('lang', App::getLocale())
+            ->paginate(6);
+    }
+
+    public function getProduct($product): Product
+    {
+        return $product->select(['products.*', 'value'])
+            ->leftJoin('product_localization', 'products.id', '=', 'product_localization.product_id')
+            ->where('products.id', $product->id)
+            ->where('lang', App::getLocale())
             ->first();
     }
 
-    public function addProduct($attributes): int
+    public function getProductById($id): Product
+    {
+        return $this->getModel()->where('products.id', $id)
+            ->select(['products.*', 'value'])
+            ->leftJoin('product_localization', 'products.id', '=', 'product_localization.product_id')
+            ->where('products.id', $id)
+            ->where('lang', App::getLocale())
+            ->first();
+    }
+
+    public function addProduct(array $attributes): int
     {
         return $this->getModel()::create($attributes)->id;
     }

@@ -13,7 +13,7 @@
             <label for="category">{{__('content.form.category')}}</label>
             <select class="form-control" name="category_id">
                 @foreach($categories as $category)
-                    <option value="{{$category->category_id}}">{{$category->category_name}}</option>
+                    <option value="{{$category->id}}">{{$category->value}}</option>
                 @endforeach
             </select>
             @error('category_id')

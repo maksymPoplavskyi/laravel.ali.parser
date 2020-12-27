@@ -2,32 +2,41 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CategoryRequest;
-use App\Repositories\CategoryLocalizationRepository;
+use App\Models\Category;
 use App\Repositories\CategoryRepository;
 use App\Repositories\LocalizationRepository;
 use App\Repositories\ProductRepository;
-use Illuminate\Support\Facades\App;
+use App\Services\CategoryService;
 
 class CategoryController extends Controller
 {
+    /** @var ProductRepository $productRepository */
     private $productRepository;
+
+    /** @var CategoryRepository $categoryRepository */
     private $categoryRepository;
+
+    /** @var LocalizationRepository $localizationRepository */
     private $localizationRepository;
 
-    public function __construct(ProductRepository $productRepository, CategoryRepository $categoryRepository, LocalizationRepository $localizationRepository)
+    /** @var CategoryService $categoryService */
+    private $categoryService;
+
+    public function __construct(ProductRepository $productRepository, LocalizationRepository $localizationRepository,
+                                CategoryService $categoryService, CategoryRepository $categoryRepository)
     {
         $this->productRepository = $productRepository;
-        $this->categoryRepository = $categoryRepository;
         $this->localizationRepository = $localizationRepository;
+        $this->categoryService = $categoryService;
+        $this->categoryRepository = $categoryRepository;
     }
 
-    public function index(CategoryRequest $request, $categoryName, CategoryLocalizationRepository $categoryLocalizationRepository)
+    public function index(Category $category)
     {
         return view('category', [
-            'categoryName' => $this->categoryRepository->getCategoryByName($categoryName)->categoryLocalization->where('localization_name', App::getLocale())->first()->category_name,
-            'categories' => $this->getCategories($categoryLocalizationRepository),
-            'products' => $this->categoryRepository->getCategoryByName($categoryName)->products()->get(),
+            'categoryName' => $category->categoryLocalization->first()->value,
+            'categories' => $this->categoryRepository->getCategoriesBasedLocale(),
+            'products' => $this->productRepository->getAllProductsByCategoryBaseLocale($category->id),
             'productsCount' => $this->productRepository->getAll()->count(),
             'localizations' => $this->localizationRepository->getAll()
         ]);

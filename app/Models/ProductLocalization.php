@@ -15,6 +15,6 @@ class ProductLocalization extends Model
     public $timestamps = false;
 
     protected $fillable = [
-      'product_id', 'localization_name', 'product_description'
+      'product_id', 'lang', 'value'
     ];
 }

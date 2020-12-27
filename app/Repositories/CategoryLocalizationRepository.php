@@ -15,8 +15,4 @@ class CategoryLocalizationRepository extends CoreRepository
         return CategoryLocalization::getModel();
     }
 
-    public function getCategoryBasedLocale($locale)
-    {
-        return $this->getModel()->where('localization_name', $locale)->get();
-    }
 }

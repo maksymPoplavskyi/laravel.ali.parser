@@ -15,12 +15,12 @@ class ProductLocalizationRepository extends CoreRepository
         return ProductLocalization::getModel();
     }
 
-    public function createProductLocalization($productId, $locale, $productDescription): void
+    public function createProductLocalization($id, $lang, $value): void
     {
         $this->getModel()::create([
-            'product_id' => $productId,
-            'localization_name' => $locale,
-            'product_description' => $productDescription
+            'product_id' => $id,
+            'lang' => $lang,
+            'value' => $value
         ]);
     }
 
@@ -29,12 +29,12 @@ class ProductLocalizationRepository extends CoreRepository
         $this->getModel()::where('product_id', $productId)->delete();
     }
 
-    public function updateProductLocalization($productId, $attributes)
+    public function updateProductLocalization($id, $attributes)
     {
         foreach ($attributes as $locale => $content) {
-            $this->getModel()::where('product_id', $productId)
-                ->where('localization_name', $locale)
-                ->update(['product_description' => $content]);
+            $this->getModel()::where('product_id', $id)
+                ->where('lang', $locale)
+                ->update(['value' => $content]);
         }
     }
 }
